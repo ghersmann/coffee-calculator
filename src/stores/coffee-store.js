@@ -19,6 +19,7 @@ export const coffeeStore = defineStore('registration', {
     const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}`, {
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_KV_REST_API_TOKEN}`,
+        'Content-Type': 'application/json',
       },
       body: '["JSON.GET", "coffee"]',
       method: 'POST',
@@ -44,8 +45,6 @@ export const coffeeStore = defineStore('registration', {
     console.error('Error occurred while loading coffee data:', error);
   }
 }
- 
-
 
           //Update coffee calculation
   }
