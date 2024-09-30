@@ -10,8 +10,8 @@ export default {
       state: coffeeStore()
     }
   },
-  /* created() {
+  created() {
     this.state.loadCoffeeData()
-  } */
+  }
 }
 </script>

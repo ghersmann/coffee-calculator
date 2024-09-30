@@ -5,3 +5,8 @@
 ::before {
   box-sizing: border-box;
 }
+
+html {
+  background-color: hotpink;
+  color: rgb(0, 54, 108);
+}
