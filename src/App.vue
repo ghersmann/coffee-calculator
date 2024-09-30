@@ -10,8 +10,8 @@ export default {
       state: coffeeStore()
     }
   },
-  created() {
-    this.state.loadCoffeeData()
-  }
-}
+  async created() {
+    await this.state.loadCoffeeData()
+    this.state.coffeeRatio()
+}}
 </script>

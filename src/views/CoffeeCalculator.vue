@@ -1,16 +1,21 @@
 <template>
-
-<form>
-    <label for="output-ml"><p>Coffee Output (ml): </p></label>
+  <h1>Coffee Calculator</h1>
+<form><ul>
+  <li class="list-item">
+    <label for="output-ml">Coffee Output (ml): </label>
     <input type="number" name="output-ml" id="output-ml" :placeholder="state.coffeeData.output" v-model="state.coffeeData.output">
-<label for="beans-g"><p>Input Beans (g): </p></label>
+  </li>
+  <li class="list-item">
+    <label for="beans-g">Input Beans (g): </label>
     <input type="number" name="beans-g" id="beans-g" :placeholder="state.coffeeData.beans" v-model="state.coffeeData.beans">
-<label for="ratio"><p>Ratio: 1 / </p>
-<input type="number" name="ratio" id="ratio" :placeholder="state.coffeeData.ratio" v-model="state.coffeeData.ratio">
-</label>
+  </li>
+  <li class="list-item">
+    <label for="ratio">Ratio: 1 / </label> <input type="number" name="ratio" id="ratio" :placeholder="state.coffeeData.ratio" v-model="state.coffeeData.ratio">
     
-<button @click.prevent="coffeeRatio">Caclulate</button>
-</form>
+  </li>
+  </ul>
+  <button @click.prevent="state.coffeeRatio">Calculate</button>
+  </form>
 </template>
 
 <script>
@@ -22,13 +27,16 @@ export default {
       state: coffeeStore(),
     }
   },
-  methods: {
-    coffeeRatio() {
-        this.state.coffeeData.ratio = Math.fround(this.state.coffeeData.output / this.state.coffeeData.beans).toFixed(1)
-    }
-  },
-  onMounted() {
-    this.coffeeRatio()
-  }
   }
 </script>
+
+<style scoped>
+.list-item {
+  display:block;
+  margin-top: 2rem;
+}
+
+button {
+  margin-top: 2rem;
+}
+</style>
