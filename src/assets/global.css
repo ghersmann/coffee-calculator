@@ -1,0 +1,7 @@
+/* Herding Cats Travel App*/
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
