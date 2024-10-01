@@ -3,7 +3,6 @@ import { defineStore } from 'pinia'
 export const coffeeStore = defineStore('registration', {
   state: () => {
     return {
-      //Ratios to calculate
       coffeeData: {
         output: 0,
         beans: 0,
@@ -13,7 +12,6 @@ export const coffeeStore = defineStore('registration', {
   },
   
   actions: {
-    //Load latest coffee calculation
     async loadCoffeeData() {
       console.log('Load Coffee Data')
       try {
@@ -22,7 +20,7 @@ export const coffeeStore = defineStore('registration', {
               Authorization: `Bearer ${import.meta.env.VITE_KV_REST_API_TOKEN}`,
               'Content-Type': 'application/json',
             },
-        body: '["JSON.GET", "coffee"]',
+        body: '["GET", "coffee"]',
         method: 'POST',
       });
 
@@ -31,7 +29,6 @@ export const coffeeStore = defineStore('registration', {
       }
 
       const apiCoffeeData = await response.json();
-
       if (apiCoffeeData.result) {
         const parsedCoffeeData = JSON.parse(apiCoffeeData.result);
         this.coffeeData = parsedCoffeeData;
@@ -41,12 +38,28 @@ export const coffeeStore = defineStore('registration', {
       }
 
     } catch (error) {
-      console.error('Error occurred while loading coffee data:', error);
+      console.error('Loading coffee data failed:', error);
     }
   },
 
-  saveCoffeeData() {
+  async saveCoffeeData() {
     console.log('Save Coffee Data')
+      try {
+        const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}set/coffee`, {
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_KV_REST_API_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(this.coffeeData),
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Saving coffee data failed:', error);
+    }
   },
 
   clearData() {
@@ -57,7 +70,6 @@ export const coffeeStore = defineStore('registration', {
       ratio: 0,
     }
   },
-
-//Update coffee calculation
-  },}
+},
+}
 )

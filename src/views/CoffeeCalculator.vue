@@ -59,13 +59,14 @@ export default {
       const { output, beans, ratio } = this.state.coffeeData;
       // Check which value is empty and calculate it based on the others
       if (this.isEmpty(output) && !this.isEmpty(beans) && !this.isEmpty(ratio)) {
-        this.state.coffeeData.output = beans * ratio; // Calculate output
+        this.state.coffeeData.output = Number((beans * ratio).toFixed(0));
       } else if (this.isEmpty(beans) && !this.isEmpty(output) && !this.isEmpty(ratio)) {
-        this.state.coffeeData.beans = output / ratio; // Calculate beans
+        this.state.coffeeData.beans = Number((output / ratio).toFixed(1));
       } else if (this.isEmpty(ratio) && !this.isEmpty(output) && !this.isEmpty(beans)) {
-        this.state.coffeeData.ratio = output / beans; // Calculate ratio
+        this.state.coffeeData.ratio = Number((output / beans).toFixed(1));
       }
     },
+
   },
 };
 </script>
