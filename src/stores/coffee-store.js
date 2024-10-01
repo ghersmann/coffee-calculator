@@ -15,6 +15,7 @@ export const coffeeStore = defineStore('registration', {
   actions: {
     //Load latest coffee calculation
     async loadCoffeeData() {
+      console.log('Load Coffee Data')
       try {
         const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}`, {
             headers: {
@@ -30,11 +31,9 @@ export const coffeeStore = defineStore('registration', {
       }
 
       const apiCoffeeData = await response.json();
-      console.log('Full API response:', apiCoffeeData);
 
       if (apiCoffeeData.result) {
         const parsedCoffeeData = JSON.parse(apiCoffeeData.result);
-        console.log('Parsed coffee data:', parsedCoffeeData);
         this.coffeeData = parsedCoffeeData;
         return parsedCoffeeData;
       } else {
@@ -46,15 +45,19 @@ export const coffeeStore = defineStore('registration', {
     }
   },
 
-  //Calculate Coffee Ratio
-  async coffeeRatio() {
-    if (this.coffeeData.output && this.coffeeData.beans) {
-      this.coffeeData.ratio = Math.fround(this.coffeeData.output / this.coffeeData.beans).toFixed(1);
-    } else {
-      console.warn('Output or Beans input is invalid');
+  saveCoffeeData() {
+    console.log('Save Coffee Data')
+  },
+
+  clearData() {
+    console.log('Clear Data')
+    this.coffeeData = {
+      output: 0,
+      beans: 0,
+      ratio: 0,
     }
   },
 
 //Update coffee calculation
-  }
-})
+  },}
+)

@@ -10,8 +10,5 @@ export default {
       state: coffeeStore()
     }
   },
-  async created() {
-    await this.state.loadCoffeeData()
-    this.state.coffeeRatio()
-}}
+  }
 </script>

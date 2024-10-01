@@ -10,7 +10,8 @@ html {
   background-color: dodgerblue;
   color: rgb(0, 54, 108);
   font-size: 10px;
-  margin: 4rem;
+  margin: 3rem;
+  width: 50rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
