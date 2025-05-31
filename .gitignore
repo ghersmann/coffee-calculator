@@ -32,3 +32,4 @@ coverage
 
 notes.css
 .vercel
+.env*.local
