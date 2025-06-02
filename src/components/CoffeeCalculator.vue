@@ -1,5 +1,4 @@
 <template>
-  <h1>Coffee Calculator</h1>
   <form>
     <ul>
       <li class="list-item">
@@ -41,7 +40,7 @@
 </template>
 
 <script>
-import { coffeeStore } from '../stores/coffee-store';
+import { coffeeStore } from '@/stores/coffee-store.js';
 
 export default {
   data() {

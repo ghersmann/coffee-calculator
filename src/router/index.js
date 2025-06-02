@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import CoffeeCalculator from '../views/CoffeeCalculator.vue'
+import CoffeeCalculator from '@/components/CoffeeCalculator.vue';
+import RecipeList from '@/components/RecipeList.vue'
+import MainView from '@/views/MainView.vue'
 
 
 const router = createRouter({
@@ -9,7 +11,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: CoffeeCalculator
+      component: MainView
     }
   ]
 })
