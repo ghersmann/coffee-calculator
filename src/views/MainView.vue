@@ -1,6 +1,6 @@
 <template>
     <header>
-  <h1>Coffee Calculator</h1>
+  <h1>Hi Coffee!</h1>
     </header>
     <main>
     <CoffeeCalculator />
