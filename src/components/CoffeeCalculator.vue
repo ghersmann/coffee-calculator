@@ -1,6 +1,5 @@
 <template>
   <div class="calculator-main">
-  <h2>Calculator</h2>
   <form>
     <ul>
       <li class="list-item">
@@ -85,6 +84,7 @@ button {
 
 .calculator-main {
   display: block;
-  width: 400px
+  width: 400px;
+  background-color: green;
 }
 </style>

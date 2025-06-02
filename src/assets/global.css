@@ -15,6 +15,15 @@ html {
   font-family: 'Courier New', Courier, monospace;
 }
 
+header {
+  background-color: antiquewhite;
+}
+
+main {
+  padding: 1rem;
+  background-color: red;
+}
+
 label, p {
   font-size: 2rem;
 }
