@@ -3,46 +3,35 @@ import { defineStore } from 'pinia'
 export const coffeeStore = defineStore('registration', {
   state: () => {
     return {
-      coffeeData: {
-        output: 0,
-        beans: 0,
-        ratio: 0,
-      }
+      coffeeData: {}
     }
   },
   
   actions: {
     async loadCoffeeData() {
       console.log('Load Coffee Data')
+      this.loading = true;
+      this.error = null;
+
       try {
-        const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}`, {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_KV_REST_API_TOKEN}`,
-              'Content-Type': 'application/json',
-            },
-        body: '["GET", "coffee"]',
-        method: 'POST',
-      });
+        const res = await fetch('/api/getCoffee');
+        const json = await res.json();
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+        if (json.success) {
+          this.coffeeData = json.data;
+          console.log('Load success: ', this.coffeeData)
+        } else {
+          this.error = 'Failed to load data.';
+        }
+      } catch (err) {
+        console.error(err);
+        this.error = 'Something went wrong.';
+      } finally {
+        this.loading = false;
       }
+    },
 
-      const apiCoffeeData = await response.json();
-      if (apiCoffeeData.result) {
-        const parsedCoffeeData = JSON.parse(apiCoffeeData.result);
-        this.coffeeData = parsedCoffeeData;
-        return parsedCoffeeData;
-      } else {
-        console.warn('Unexpected response format:', apiCoffeeData);
-      }
-
-    } catch (error) {
-      console.error('Loading coffee data failed:', error);
-    }
-  },
-
-  async saveCoffeeData() {
+  /* async saveCoffeeData() {
     console.log('Save Coffee Data')
       try {
         const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}set/coffee`, {
@@ -69,7 +58,7 @@ export const coffeeStore = defineStore('registration', {
       beans: 0,
       ratio: 0,
     }
-  },
+  }, */
 },
 }
 )
