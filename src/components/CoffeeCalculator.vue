@@ -1,4 +1,6 @@
 <template>
+  <div class="calculator-main">
+  <h2>Calculator</h2>
   <form>
     <ul>
       <li class="list-item">
@@ -37,6 +39,7 @@
   </form>
   <button @click="state.loadCoffeeData">Load Data</button>
   <button @click="state.saveCoffeeData">Save Data</button>
+  </div>
 </template>
 
 <script>
@@ -78,5 +81,10 @@ export default {
 
 button {
   margin-top: 2rem;
+}
+
+.calculator-main {
+  display: block;
+  width: 400px
 }
 </style>

@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   try {
     const client = await clientPromise;
     const db = client.db('coffee_calculator');
-    const collection = db.collection('ratios');
+    const collection = db.collection('coffee_data');
 
     const data = await collection.find({}).toArray();
 

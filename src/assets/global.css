@@ -15,12 +15,16 @@ html {
   font-family: 'Courier New', Courier, monospace;
 }
 
-label {
+label, p {
   font-size: 2rem;
 }
 
 h1 {
   font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
 }
 
 input, button {
