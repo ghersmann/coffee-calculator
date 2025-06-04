@@ -1,7 +1,12 @@
 <template>
   <li class="coffee-recipe">
     <div class="title-type">
-      <p>Recipe: <br>{{ item.name || 'Unnamed Recipe' }}</p><br>
+      <p>
+        Recipe: <br>
+            <span
+                :class="{ 'clamp-text': !showDetails }"
+            >{{ item.name || 'Unnamed Recipe' }}</span>
+      </p><br>
       <p>Type: <br>{{ item.type || 'N/A' }}</p><br>
     </div>
 
@@ -42,7 +47,7 @@ export default {
   display: flex;
   flex-direction: column;
   min-width: 145px;
-  max-width: 80vw;
+  max-width: 310px;
   padding-right: 1rem;
   margin-right: 2rem;
   height: auto;
@@ -57,4 +62,13 @@ export default {
 .detail-btn {
   display: block;
 }
+
+.clamp-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 </style>
