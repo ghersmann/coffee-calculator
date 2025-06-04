@@ -1,6 +1,9 @@
 <template>
   <div class="calculator-main">
-  <form>
+  <button @click="toggleNewItem" class="new-recipe-btn">
+    {{ newItemVisible === false ? 'New Recipe' : 'Close' }}
+  </button>
+  <form v-if="newItemVisible === true">
     <ul>
       <li class="list-item">
         <label for="output-ml">Coffee Output (ml): </label>
@@ -35,9 +38,8 @@
     </ul>
     <button @click.prevent="calculateCoffeeData">Calculate</button>
     <button @click.prevent="state.clearData">Clear</button>
+    <button @click.prevent="state.saveCoffeeData">Save Data</button>
   </form>
-  <button @click="state.loadCoffeeData">Load Data</button>
-  <button @click="state.saveCoffeeData">Save Data</button>
   </div>
 </template>
 
@@ -48,10 +50,15 @@ export default {
   data() {
     return {
       state: coffeeStore(),
+      newItemVisible: false
     };
   },
   
   methods: {
+    toggleNewItem() {
+      this.newItemVisible = !this.newItemVisible
+    },
+
     isEmpty(value) {
       return value === 0 || value === null || value === undefined || value === '';
     },
@@ -73,18 +80,12 @@ export default {
 </script>
 
 <style scoped>
-.list-item {
-  display: block;
-  margin-top: 2rem;
-}
-
-button {
-  margin-top: 2rem;
-}
-
 .calculator-main {
   display: block;
-  width: 400px;
-  background-color: green;
+}
+
+.new-recipe-btn {
+margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 </style>

@@ -1,10 +1,10 @@
 <template>
     <header>
-  <h1>Hi Coffee!</h1>
+      <h1>Hi Coffee!</h1>
     </header>
     <main>
-    <CoffeeCalculator />
-    <RecipeList />
+      <RecipeList />
+      <CoffeeCalculator />
     </main>
 </template>
 
@@ -20,10 +20,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-main {
-    display: flex;
-    width: 100%;
-}
-</style>
