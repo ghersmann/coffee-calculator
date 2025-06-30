@@ -102,6 +102,16 @@ if (this.newRecipe.name !== '') {
   } catch (error) {
     console.error('Save error:', error);
   }
+  this.newRecipe = {
+        name: '',
+        type: '',
+        output: '',
+        beans: '',
+        ratio: '',
+        grinder: '',
+        grindsetting: '',
+        watertemp: ''
+      }
 } else {
   return alert('Please name your recipe. Thank you.')
 }
