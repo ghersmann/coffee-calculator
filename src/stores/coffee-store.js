@@ -3,7 +3,17 @@ import { defineStore } from 'pinia'
 export const coffeeStore = defineStore('registration', {
   state: () => {
     return {
-      coffeeData: {}
+      coffeeData: {},
+      newRecipe: {
+        name: '',
+        type: '',
+        output: '',
+        beans: '',
+        ratio: '',
+        grinder: '',
+        grindsetting: '',
+        watertemp: ''
+      },
     }
   },
   
@@ -31,34 +41,42 @@ export const coffeeStore = defineStore('registration', {
       }
     },
 
-  /* async saveCoffeeData() {
-    console.log('Save Coffee Data')
-      try {
-        const response = await fetch(`${import.meta.env.VITE_KV_REST_API_URL}set/coffee`, {
-            headers: {
-              Authorization: `Bearer ${import.meta.env.VITE_KV_REST_API_TOKEN}`,
-              'Content-Type': 'application/json',
-            },
-        body: JSON.stringify(this.coffeeData),
-        method: 'POST',
-      });
+async saveRecipe() {
+if (this.newRecipe.name ===){
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-    } catch (error) {
-      console.error('Saving coffee data failed:', error);
+  try {
+    const response = await fetch('/api/saveRecipe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(this.newRecipe)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log('Recipe saved with ID:', result.insertedId);
+    } else {
+      console.error('Save failed:', result.message);
     }
-  },
+  } catch (error) {
+    console.error('Save error:', error);
+  }
+}
+},
 
   clearData() {
     console.log('Clear Data')
-    this.coffeeData = {
-      output: 0,
-      beans: 0,
-      ratio: 0,
-    }
-  }, */
+     this.newRecipe = {
+        name: '',
+        type: '',
+        output: '',
+        beans: '',
+        ratio: '',
+        grinder: '',
+        grindsetting: '',
+        watertemp: ''
+      }
+  },
 },
 }
 )
