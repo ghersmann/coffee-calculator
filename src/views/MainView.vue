@@ -4,18 +4,18 @@
     </header>
     <main>
       <RecipeList />
-      <CoffeeCalculator />
+      <NewRecipe />
     </main>
 </template>
 
 <script>
-import CoffeeCalculator from '@/components/CoffeeCalculator.vue';
+import NewRecipe from '@/components/NewRecipe.vue';
 import RecipeList from '@/components/RecipeList.vue';
 
 export default {
   name: 'MainView',
   components: {
-    CoffeeCalculator,
+    NewRecipe,
     RecipeList,
   }
 }
