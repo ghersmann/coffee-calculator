@@ -76,5 +76,4 @@ async saveRecipe() {
       }
   },
 },
-}
 )
