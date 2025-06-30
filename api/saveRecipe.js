@@ -1,3 +1,4 @@
+// api/saveRecipe.js
 import clientPromise from '../lib/mongodb.js';
 
 export default async function handler(req, res) {
@@ -8,12 +9,6 @@ export default async function handler(req, res) {
 
   try {
     const data = req.body;
-    console.log('typoOF', typeof(data), data)
-
-    // Basic validation (optional)
-  /*   if (!data.name || !data.output || !data.beans) {
-      return res.status(400).json({ success: false, message: 'Missing required fields' });
-    } */
 
     const client = await clientPromise;
     const db = client.db('coffee_calculator');

@@ -17,13 +17,13 @@
             :id="field.key"
             :name="field.key"
             :placeholder="field.placeholder"
-            v-model="state.newRecipe[field.key]"
+            v-model="newRecipe[field.key]"
           />
         </li>
 
         <li><button @click.prevent="calculateCoffeeRatio">Calculate Ratio</button></li>
-        <li><button @click.prevent="state.clearData">Clear</button></li>
-        <li><button @click.prevent="state.saveRecipe">Save Recipe</button></li>
+        <li><button @click.prevent="clearData">Clear fields</button></li>
+        <li><button @click.prevent="saveRecipe">Save Recipe</button></li>
       </ul>
     </form>
   </div>
@@ -37,6 +37,17 @@ export default {
     return {
       state: coffeeStore(),
       newItemVisible: false,
+
+      newRecipe: {
+        name: '',
+        type: '',
+        output: '',
+        beans: '',
+        ratio: '',
+        grinder: '',
+        grindsetting: '',
+        watertemp: ''
+      },
 
       fields: [
         { key: 'name', label: 'Recipe', type: 'text', placeholder: 'e.g. Naughty Unicorn' },
@@ -61,18 +72,56 @@ export default {
     },
 
     calculateCoffeeRatio() {
-      const { output, beans, ratio } = this.state.newRecipe;
+      const { output, beans, ratio } = this.newRecipe;
 
       if (this.isEmpty(output) && !this.isEmpty(beans) && !this.isEmpty(ratio)) {
-        this.state.newRecipe.output = Number((beans * ratio).toFixed(0));
+        this.newRecipe.output = Number((beans * ratio).toFixed(0));
       } else if (this.isEmpty(beans) && !this.isEmpty(output) && !this.isEmpty(ratio)) {
-        this.state.newRecipe.beans = Number((output / ratio).toFixed(1));
+        this.newRecipe.beans = Number((output / ratio).toFixed(1));
       } else if (this.isEmpty(ratio) && !this.isEmpty(output) && !this.isEmpty(beans)) {
-        this.state.newRecipe.ratio = Number((output / beans).toFixed(1));
+        this.newRecipe.ratio = Number((output / beans).toFixed(1));
       }
+    },
+
+    async saveRecipe() {
+if (this.newRecipe.name !== '') {
+  try {
+    const response = await fetch('/api/saveRecipe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(this.newRecipe)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      console.log('Recipe saved with ID:', result.insertedId);
+    } else {
+      console.error('Save failed:', result.message);
     }
+  } catch (error) {
+    console.error('Save error:', error);
   }
-};
+} else {
+  return alert('Please name your recipe. Thank you.')
+}
+},
+
+clearData() {
+    console.log('Clear Data')
+     this.newRecipe = {
+        name: '',
+        type: '',
+        output: '',
+        beans: '',
+        ratio: '',
+        grinder: '',
+        grindsetting: '',
+        watertemp: ''
+      }
+  },
+  }
+}
 </script>
 
 <style scoped>

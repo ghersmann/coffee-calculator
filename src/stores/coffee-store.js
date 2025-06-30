@@ -4,16 +4,6 @@ export const coffeeStore = defineStore('registration', {
   state: () => {
     return {
       coffeeData: {},
-      newRecipe: {
-        name: '',
-        type: '',
-        output: '',
-        beans: '',
-        ratio: '',
-        grinder: '',
-        grindsetting: '',
-        watertemp: ''
-      },
     }
   },
   
@@ -40,40 +30,5 @@ export const coffeeStore = defineStore('registration', {
         this.loading = false;
       }
     },
-
-async saveRecipe() {
-  try {
-    const response = await fetch('/api/saveRecipe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.newRecipe)
-    });
-
-    const result = await response.json();
-
-    if (result.success) {
-      console.log('Recipe saved with ID:', result.insertedId);
-    } else {
-      console.error('Save failed:', result.message);
-    }
-  } catch (error) {
-    console.error('Save error:', error);
-  }
 }
-},
-
-  clearData() {
-    console.log('Clear Data')
-     this.newRecipe = {
-        name: '',
-        type: '',
-        output: '',
-        beans: '',
-        ratio: '',
-        grinder: '',
-        grindsetting: '',
-        watertemp: ''
-      }
-  },
-},
-)
+});
