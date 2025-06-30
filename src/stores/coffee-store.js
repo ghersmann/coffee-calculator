@@ -42,8 +42,6 @@ export const coffeeStore = defineStore('registration', {
     },
 
 async saveRecipe() {
-if (this.newRecipe.name ===){
-
   try {
     const response = await fetch('/api/saveRecipe', {
       method: 'POST',
