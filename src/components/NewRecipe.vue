@@ -50,14 +50,14 @@ export default {
       },
 
       fields: [
-        { key: 'name', label: 'Recipe', type: 'text', placeholder: 'e.g. Naughty Unicorn' },
-        { key: 'type', label: 'Type', type: 'text', placeholder: 'filter or espresso' },
-        { key: 'output', label: 'Coffee Output (ml)', type: 'number', placeholder: 'e.g. 800' },
-        { key: 'beans', label: 'Input Beans (g)', type: 'number', placeholder: 'e.g. 48' },
-        { key: 'ratio', label: 'Ratio (1/x)', type: 'number', placeholder: 'e.g. 2.0' },
-        { key: 'grinder', label: 'Grinder', type: 'text', placeholder: 'e.g. Fellow Ode II' },
-        { key: 'grindsetting', label: 'Grind Setting', type: 'text', placeholder: 'e.g. 2.8' },
-        { key: 'watertemp', label: 'Water Temp (°C)', type: 'number', placeholder: 'e.g. 98' },
+        { key: 'name', label: 'Recipe', type: 'text', placeholder: ' e.g. Naughty Unicorn' },
+        { key: 'type', label: 'Type', type: 'text', placeholder: ' filter or espresso' },
+        { key: 'output', label: 'Coffee Output (ml)', type: 'number', placeholder: ' e.g. 800' },
+        { key: 'beans', label: 'Input Beans (g)', type: 'number', placeholder: ' e.g. 48' },
+        { key: 'ratio', label: 'Ratio (1/x)', type: 'number', placeholder: ' e.g. 2.0' },
+        { key: 'grinder', label: 'Grinder', type: 'text', placeholder: ' e.g. Fellow Ode II' },
+        { key: 'grindsetting', label: 'Grind Setting', type: 'text', placeholder: ' e.g. 2.8' },
+        { key: 'watertemp', label: 'Water Temp (°C)', type: 'number', placeholder: ' e.g. 98' },
       ]
     };
   },
@@ -102,16 +102,7 @@ if (this.newRecipe.name !== '') {
   } catch (error) {
     console.error('Save error:', error);
   }
-  this.newRecipe = {
-        name: '',
-        type: '',
-        output: '',
-        beans: '',
-        ratio: '',
-        grinder: '',
-        grindsetting: '',
-        watertemp: ''
-      }
+ this.clearData()
 } else {
   return alert('Please name your recipe. Thank you.')
 }
@@ -136,15 +127,27 @@ clearData() {
 
 <style scoped>
 li {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .calculator-main {
   display: block;
+  margin-top: 5rem;
 }
 
 .new-recipe-btn {
   margin-top: 4rem;
   margin-bottom: 2rem;
+}
+
+input {
+  border-radius: 0.5rem;
+  border: 0;
+  width: 20rem;
+  height: 2.3rem;
+}
+
+button {
+  width: 20rem;
 }
 </style>
