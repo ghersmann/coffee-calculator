@@ -9,7 +9,6 @@ export const coffeeStore = defineStore('registration', {
   
   actions: {
     async loadCoffeeData() {
-      console.log('Load Coffee Data')
       this.loading = true;
       this.error = null;
 
@@ -19,7 +18,6 @@ export const coffeeStore = defineStore('registration', {
 
         if (json.success) {
           this.coffeeData = json.data;
-          console.log('Load success: ', this.coffeeData)
         } else {
           this.error = 'Failed to load data.';
         }

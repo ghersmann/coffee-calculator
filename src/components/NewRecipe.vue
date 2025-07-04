@@ -94,9 +94,7 @@ if (this.newRecipe.name !== '') {
 
     const result = await response.json();
 
-    if (result.success) {
-      console.log('Recipe saved with ID:', result.insertedId);
-    } else {
+    if (!result.success) {
       console.error('Save failed:', result.message);
     }
   } catch (error) {
@@ -109,7 +107,6 @@ if (this.newRecipe.name !== '') {
 },
 
 clearData() {
-    console.log('Clear Data')
      this.newRecipe = {
         name: '',
         type: '',

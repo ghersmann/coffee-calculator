@@ -2,7 +2,6 @@
 import clientPromise from '../lib/mongodb.js';
 
 export default async function handler(req, res) {
-    console.log('saveRecipe started')
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
