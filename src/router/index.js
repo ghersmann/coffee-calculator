@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import NewRecipe from '@/components/NewRecipe.vue';
-import RecipeList from '@/components/RecipeList.vue'
 import MainView from '@/views/MainView.vue'
 
 
