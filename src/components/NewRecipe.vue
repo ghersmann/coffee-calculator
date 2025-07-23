@@ -84,27 +84,29 @@ export default {
     },
 
     async saveRecipe() {
-if (this.newRecipe.name !== '') {
-  try {
-    const response = await fetch('/api/saveRecipe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.newRecipe)
-    });
+      if (this.newRecipe.name !== '') {
+        try {
+          const response = await fetch('/api/saveRecipe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(this.newRecipe)
+          });
 
-    const result = await response.json();
+          const result = await response.json();
 
-    if (!result.success) {
-      console.error('Save failed:', result.message);
-    }
-  } catch (error) {
-    console.error('Save error:', error);
-  }
- this.clearData()
-} else {
-  return alert('Please name your recipe. Thank you.')
-}
-},
+          if (result.success) {
+            await this.state.loadCoffeeData();
+            this.clearData();
+            this.newItemVisible = false;
+          }
+        } catch (error) {
+          console.error('Save error:', error);
+        }
+      this.clearData()
+      } else {
+        return alert('Please name your recipe. Thank you.')
+      }
+    },
 
 clearData() {
      this.newRecipe = {

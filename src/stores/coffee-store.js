@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const coffeeStore = defineStore('registration', {
   state: () => {
     return {
-      coffeeData: {},
+      coffeeData: [],
     }
   },
   
