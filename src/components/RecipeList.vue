@@ -4,6 +4,7 @@
       v-for="(item, index) in state.coffeeData"
       :key="item._id"
       :item="item"
+      @deleted="removeFromList"
     />
   </ul>
 </template>
@@ -20,6 +21,15 @@ export default {
       state: coffeeStore()
     }
   },
+  methods: {
+  removeFromList(deletedId) {
+    const index = this.state.coffeeData.findIndex(item => item._id === deletedId);
+    if (index !== -1) {
+      this.state.coffeeData.splice(index, 1);
+    }
+  }
+},
+
   async created() {
     await this.state.loadCoffeeData()
   }
