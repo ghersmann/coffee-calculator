@@ -19,7 +19,7 @@
             {{ item.grinder || '—' }}</p><br>
         <p>Grind Setting: {{ item.grindsetting || '—' }}</p><br>
         <p>Water Temp: {{ item.watertemp || '—' }}</p><br>
-          <button @click="editCoffeeRecipe(item._id)">Edit</button>
+          <button @click="editCoffeeRecipe">Edit</button>
           <button @click="deleteCoffeeRecipe(item._id)">Delete</button>
       </div>
     </div>
@@ -42,9 +42,10 @@ export default {
     }
   },
   methods: {
-    editCoffeeRecipe(recipeId) {
-      console.log('Edit started, id: ', recipeId)
-    },
+    editCoffeeRecipe() {
+        console.log('Edit recipe')
+        this.$emit('edit', this.item);
+      },
 
     async deleteCoffeeRecipe(recipeId) {
         const confirmDelete = confirm('Are you sure you want to delete this recipe?');
