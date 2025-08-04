@@ -4,6 +4,9 @@
       v-for="(item, index) in state.coffeeData"
       :key="item._id"
       :item="item"
+      @deleted="removeFromList"
+      @edit="startEdit"
+      @updated="updateInList"
     />
   </ul>
 </template>
@@ -17,9 +20,35 @@ export default {
   components: { RecipeCard },
   data() {
     return {
-      state: coffeeStore()
+      state: coffeeStore(),
     }
   },
+  methods: {
+  removeFromList(deletedId) {
+    const index = this.state.coffeeData.findIndex(item => item._id === deletedId);
+    if (index !== -1) {
+      this.state.coffeeData.splice(index, 1);
+    }
+  },
+
+  startEdit(recipe) {
+    this.editingRecipe = { ...recipe }; 
+    this.editVisible = true;
+  },
+
+  updateInList(updatedRecipe) {
+    const index = this.state.coffeeData.findIndex(r => r._id === updatedRecipe._id);
+    if (index !== -1) {
+      this.state.coffeeData.splice(index, 1, updatedRecipe);
+    }
+  },
+
+  cancelEdit() {
+    this.editingRecipe = null;
+    this.editVisible = false;
+  }
+},
+
   async created() {
     await this.state.loadCoffeeData()
   }
