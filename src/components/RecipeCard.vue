@@ -5,12 +5,12 @@
         <span v-if="!editMode" :class="{ 'clamp-text': !showDetails }">
           {{ localRecipe.name || 'Unnamed Recipe' }}
         </span>
-        <input v-else v-model="localRecipe.name" />
+        <textarea class="txtarea-edit" v-else v-model="localRecipe.name"></textarea>
       </p><br>
 
-      <p>Type: <br>
+      <p>Type: 
         <span v-if="!editMode">{{ localRecipe.type || 'N/A' }}</span>
-        <input v-else v-model="localRecipe.type" />
+        <input type="text" v-else v-model="localRecipe.type" />
       </p><br>
     </div>
 
@@ -20,7 +20,7 @@
           <p>Output (g): {{ localRecipe.output || '—' }}</p><br>
           <p>Coffee (g): {{ localRecipe.beans || '—' }}</p><br>
           <p>Ratio: 1/{{ localRecipe.ratio || '—' }}</p><br>
-          <p>Grinder: <br>{{ localRecipe.grinder || '—' }}</p><br>
+          <p>Grinder: {{ localRecipe.grinder || '—' }}</p><br>
           <p>Grind Setting: {{ localRecipe.grindsetting || '—' }}</p><br>
           <p>Water Temp: {{ localRecipe.watertemp || '—' }}</p><br>
         </template>
@@ -30,7 +30,7 @@
           <p>Coffee (g): <input type="number" v-model="localRecipe.beans" /></p><br>
           <p>Ratio: 1/<input type="number" v-model="localRecipe.ratio" /></p><br>
           <p>Grinder: <input type="text" v-model="localRecipe.grinder" /></p><br>
-          <p>Grind Setting: <input type="text" v-model="localRecipe.grindsetting" /></p><br>
+          <p>Grind Setting: <input type="number" v-model="localRecipe.grindsetting" /></p><br>
           <p>Water Temp: <input type="number" v-model="localRecipe.watertemp" /></p><br>
         </template>
 
@@ -162,5 +162,26 @@ button {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.txtarea-edit {
+  width: 12.5rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+}
+
+.button-row {
+  margin-top: 2rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  background-color: white;
+  border: 0;
+  border-radius: 0.5rem;
+  height: 2.7rem;
+  width: 12.5rem;
+  padding: 1rem;
 }
 </style>
