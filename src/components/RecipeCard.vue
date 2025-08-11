@@ -134,6 +134,7 @@ export default {
 .coffee-recipe {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   min-width: 145px;
   max-width: 310px;
   padding-right: 1rem;

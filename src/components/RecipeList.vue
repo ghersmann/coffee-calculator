@@ -57,7 +57,7 @@ export default {
 
 <style scoped>
 .recipe-list {
-  width: 100%;
+  width: 80%;
   display: flex;
   overflow-x: auto;
   margin-top: 2rem;

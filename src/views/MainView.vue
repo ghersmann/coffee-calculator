@@ -1,4 +1,5 @@
 <template>
+  <div class="can-wrap">
     <header>
       <h1>Hi Coffee!</h1>
     </header>
@@ -6,6 +7,7 @@
       <RecipeList />
       <NewRecipe />
     </main>
+    </div>
 </template>
 
 <script>
