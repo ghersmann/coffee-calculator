@@ -50,14 +50,14 @@ export default {
       },
 
       fields: [
-        { key: 'name', label: 'Recipe', type: 'text', placeholder: ' e.g. Naughty Unicorn' },
-        { key: 'type', label: 'Type', type: 'text', placeholder: ' filter or espresso' },
-        { key: 'output', label: 'Coffee Output (ml)', type: 'number', placeholder: ' e.g. 800' },
-        { key: 'beans', label: 'Input Beans (g)', type: 'number', placeholder: ' e.g. 48' },
-        { key: 'ratio', label: 'Ratio (1/x)', type: 'number', placeholder: ' e.g. 2.0' },
-        { key: 'grinder', label: 'Grinder', type: 'text', placeholder: ' e.g. Fellow Ode II' },
-        { key: 'grindsetting', label: 'Grind Setting', type: 'text', placeholder: ' e.g. 2.8' },
-        { key: 'watertemp', label: 'Water Temp (°C)', type: 'number', placeholder: ' e.g. 98' },
+        { key: 'name', label: 'Recipe', type: 'text', placeholder: 'e.g. Naughty Unicorn' },
+        { key: 'type', label: 'Type', type: 'text', placeholder: 'filter or espresso' },
+        { key: 'output', label: 'Coffee Output (ml)', type: 'number', placeholder: 'e.g. 800' },
+        { key: 'beans', label: 'Input Beans (g)', type: 'number', placeholder: 'e.g. 48' },
+        { key: 'ratio', label: 'Ratio (1/x)', type: 'number', placeholder: 'e.g. 2.0' },
+        { key: 'grinder', label: 'Grinder', type: 'text', placeholder: 'e.g. Fellow Ode II' },
+        { key: 'grindsetting', label: 'Grind Setting', type: 'number', placeholder: 'e.g. 2.8' },
+        { key: 'watertemp', label: 'Water Temp (°C)', type: 'number', placeholder: 'e.g. 98' },
       ]
     };
   },
